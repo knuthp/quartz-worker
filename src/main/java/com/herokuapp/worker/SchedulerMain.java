@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.repeatSecondlyForever;
+import static org.quartz.SimpleScheduleBuilder.repeatMinutelyForever;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 public class SchedulerMain {
@@ -27,7 +27,7 @@ public class SchedulerMain {
 		JobDetail jobDetail = newJob(HelloJob.class).build();
 
 		Trigger trigger = newTrigger().startNow()
-				.withSchedule(repeatSecondlyForever(5)).build();
+				.withSchedule(repeatMinutelyForever(5)).build();
 
 		scheduler.scheduleJob(jobDetail, trigger);
 	}
